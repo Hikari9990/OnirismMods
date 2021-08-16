@@ -1,0 +1,14 @@
+The following .dlls are needed for compiling:
+
+
+-From the "Onirism\Onirism_Data\Managed" folder:
+
+Assembly-CSharp.dll
+UnityEngine.dll
+
+
+-From the "BepInEx\Core" folder:
+
+0Harmony.dll
+BepInEx.dll
+BepInEx.Harmony.dll
