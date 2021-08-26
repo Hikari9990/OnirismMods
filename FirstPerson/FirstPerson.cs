@@ -1,6 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using BepInEx.Logging;
 using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,7 +16,9 @@ namespace FirstPerson
 
         public const string modGuid = nameof(FirstPerson);
         public const string modName = "First Person";
-        public const string modVersion = "1.0";
+        public const string modVersion = "1.1";
+
+        public static ManualLogSource logSource = new ManualLogSource(modGuid);
 
 
         private static bool FPEnabled = false;
@@ -54,12 +58,15 @@ namespace FirstPerson
             outfitComponents["CAROL_NinjaIce(Clone)"] = new List<string> { "tete", "Ninjamask", "ninja", "Pyjm_R_Eye018", "Pyjm_hair018" };
             outfitComponents["CAROL_SummerBlast2(Clone)"] = new List<string> { "tete", "Pyjm_R_Eye018", "Pyjm_hair017", "earrings", "Cap" };
             outfitComponents["CAROL_SummerBlast3(Clone)"] = new List<string> { "tete", "Pyjm_R_Eye018", "Hair_twinbraid", "earrings", "swimgoogles" };
+            outfitComponents["CAROL_Hunt_League1(Clone)"] = new List<string> { "tete", "P1", "P2", "P3", "P4", "Hair_Flowing", "Cap_hunt", "Pyjm_hair018", "earrings" };
+            outfitComponents["CAROL_SummerDress1(Clone)"] = new List<string> { "tete", "P1", "P2", "P3", "P4", "Hair_Flowing", "Hair_BigBraid001", "Sunglasses", "Sunflower" };
 
 
             Harmony harmony = new Harmony(modGuid);
             harmony.PatchAll(typeof(FirstPerson));
 
-            Logger.LogInfo("Plugin loaded.");
+            BepInEx.Logging.Logger.Sources.Add(logSource);
+            logSource.LogInfo("Plugin loaded.");
         }
 
         private void Update()
@@ -127,9 +134,9 @@ namespace FirstPerson
             {
                 foreach (GameObject ob in objects)
                 {
-                    if (ob.gameObject.activeSelf)
+                    if (ob.GetComponent<SkinnedMeshRenderer>() != null)
                     {
-                        ob.SetActive(false);
+                        ob.GetComponent<SkinnedMeshRenderer>().enabled = false;
                     }
                 }
             }
@@ -152,14 +159,10 @@ namespace FirstPerson
             {
                 foreach (GameObject ob in objects)
                 {
-                    ob.SetActive(true);
-                    CoopModelToggle[] models = ob.transform.GetComponentsInChildren<CoopModelToggle>(true);
-                    foreach (CoopModelToggle md in models)
+                    if (ob.GetComponent<SkinnedMeshRenderer>() != null)
                     {
-                        md.gameObject.SetActive(true);
-                        md.enabled = true;
+                        ob.GetComponent<SkinnedMeshRenderer>().enabled = true;
                     }
-
                 }
 
 
@@ -215,6 +218,18 @@ namespace FirstPerson
             {
                 Vector3 cameraOffset = new Vector3(cfgCameraOffsetX.Value, cfgCameraOffsetY.Value, cfgCameraOffsetZ.Value);
                 __instance.playerCam.transform.position = __instance.gameObject.transform.position + Vector3.Lerp(Quaternion.Euler(-__instance.manualAimAngle.eulerAngles.z, __instance.gameObject.transform.rotation.eulerAngles.y, 0f) * cameraOffset, Quaternion.Euler(0f, __instance.gameObject.transform.rotation.eulerAngles.y, 0f) * cameraOffset, 0.5f);
+            }
+        }
+
+        [HarmonyPostfix, HarmonyPatch(typeof(Entity), "IFrameBlink")]
+        private static void IFrameBlink_Postfix(Entity __instance)
+        {
+
+            if (!FPEnabled) return;
+
+            if (Entity.players != null && Entity.players[0] == __instance && Entity.players[0].GetComponent<Inventory>().activeWeapon != null)
+            {
+                HideObjects();
             }
         }
 
