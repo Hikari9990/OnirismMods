@@ -6,6 +6,10 @@ Compilation of mods for the game Onirism.
 Allows you to switch between the four different color palettes used for the co-op versions of Carol in singleplayer mode. Use F11 and F12 to cycle between them. Your current selection is saved in the mod's configuration file, so the change will persist between different sessions.
 ### FirstPerson
 Adds a first person mode to the game, toggled by pressing X. Currently only works while aiming with a gun. Note that some weapons and outfits may get in the way of the camera, but it should generally work without too many issues.
+### FreeCamera
+Adds a rudimentary free camera/photo mode to the game, see config file for the default key bindings.
+### ForceEnglishText
+Allows you to play the game with French audio and English subtitles by forcing the game to load English text no matter the language selected in the settings.
 
 #### These mods shouldn't affect saves in any way, but always remember to make a backup copy of your saves, just in case.
 
