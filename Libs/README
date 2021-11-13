@@ -5,6 +5,7 @@ The following .dlls are needed for compiling:
 
 Assembly-CSharp.dll
 UnityEngine.dll
+UnityEngine.UI.dll
 
 
 -From the "BepInEx\Core" folder:

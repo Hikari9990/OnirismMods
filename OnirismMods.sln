@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorSwap", "ColorSwap\Colo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstPerson", "FirstPerson\FirstPerson.csproj", "{7862E9AC-BB0B-48FD-AADC-BC398F70F6E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCamera", "FreeCamera\FreeCamera.csproj", "{8250B740-89F3-4AC8-AD31-1468EB015C79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForceEnglishText", "ForceEnglishText\ForceEnglishText.csproj", "{A79FAE64-81BA-44BC-AE8E-ADA85CF88BE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{7862E9AC-BB0B-48FD-AADC-BC398F70F6E6}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{7862E9AC-BB0B-48FD-AADC-BC398F70F6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7862E9AC-BB0B-48FD-AADC-BC398F70F6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8250B740-89F3-4AC8-AD31-1468EB015C79}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{8250B740-89F3-4AC8-AD31-1468EB015C79}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{8250B740-89F3-4AC8-AD31-1468EB015C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8250B740-89F3-4AC8-AD31-1468EB015C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A79FAE64-81BA-44BC-AE8E-ADA85CF88BE1}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{A79FAE64-81BA-44BC-AE8E-ADA85CF88BE1}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{A79FAE64-81BA-44BC-AE8E-ADA85CF88BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A79FAE64-81BA-44BC-AE8E-ADA85CF88BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
